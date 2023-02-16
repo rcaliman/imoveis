@@ -1,0 +1,85 @@
+{{ define "views/usuarios_form.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Formulário de Usuarios">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <form name="usuarios_form" id="usuarios_form" method="post" action="../usuarios/form" needs-validation>
+                <input type="hidden" value="{{ .usuario.ID }}" name="id">
+                <div class="form-group">
+                    <label for="usuario">Usuário:</label>
+                    <input id="usuario" name="usuario" class="form-control" type="text" value="{{ .usuario.Usuario }}"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    {{ .select_tipo_usuario }}
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input id="senha" name="senha" class="form-control" type="password" value="{{ .usuario.Senha }}"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmasenha">Confirma Senha:</label>
+                    <input id="confirmasenha" name="confirmasenha" class="form-control" type="password"
+                           value="{{ .usuario.Senha }}"
+                           required>
+                </div>
+                <div class="espacador"></div>
+                <div class="rodapetabela">
+                    {{ if .usuario.ID }}
+                        <button id="botaosalvar" class="botaosalvar">Salvar Alterações</button>
+                    {{ else }}
+                        <button id="botaosalvar" class="botaosalvar">Adicionar novo Usuário</button>
+                    {{end }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container" style="padding-top: 100px">
+        <div class="usuarios">
+            <table class="table">
+
+                <th>Usuario</th>
+                <th>Tipo</th>
+                <th colspan="2">
+                </th>
+                {{ range .usuarios }}
+                    <tr>
+                        <td>{{ .Usuario }}</td>
+                        <td>{{ .Tipo }}</td>
+                        <td class="center"><a class="btn btn-sm btn-secondary btn-form"
+                                              href="/sistema/usuarios/form?editar={{ .ID }}">Alterar</a></td>
+                        <td class="center"><a class="btn btn-sm btn-danger btn-form"
+                                              href="/sistema/usuarios/form?apagar={{ .ID }}"
+                                              onclick="return confirm('Tem certeza de que deseja apagar o usuário?');">Deletar</a>
+                        </td>
+                    </tr>
+                {{ end}}
+
+            </table>
+        </div>
+    </div>
+    </body>
+    <script>
+        botaosalvar.addEventListener("click", comparaSenhas, false)
+
+        function comparaSenhas(event) {
+            if (senha.value != confirmasenha.value) {
+                alert("A nova senha e a confirmação da nova senha não são iguais.")
+                senha.value = ""
+                confirmasenha.value = ""
+                event.preventDefault()
+            }
+        }
+    </script>
+    </html>
+
+{{ end }}

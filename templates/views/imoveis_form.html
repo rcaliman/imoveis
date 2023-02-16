@@ -1,0 +1,59 @@
+{{ define "views/imoveis_form.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Formulário de Imóveis">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <form name="imoveis_form" id="imoveis_form" method="post" action="../imoveis" needs-validation>
+                <input type="hidden" value="{{ .imovel.ID }}" name="id">
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    {{ .select_tipos }}
+                    <span class="avisocondominio">* para o tipo "condomínio" especifique também a quantidade e o tipo de imóvel no campo "Observações". Ex.: "2 salas"</span>
+                </div>
+                <div class="form-group">
+                    <label for="numero">Número:</label>
+                    <input id="numero" name="numero" class="form-control" type="number" value="{{ .imovel.Numero }}"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="local">Local:</label>
+                    <input id="local" name="local" class="form-control" type="text" value="{{ .imovel.Local }}">
+                </div>
+                <div class="form-group">
+                    <label for="cliente">Cliente:</label>
+                    {{ .select_clientes }}
+                </div>
+                <div class="form-group">
+                    <label for="valor_aluguel">Valor:</label>
+                    <input id="valor_aluguel" name="valor_aluguel" class="form-control" type="number" placeholder="0,00"
+                           step="0.01"
+                           value="{{ if .imovel.ValorAluguel }}{{ .imovel.ValorAluguel | formataDinheiro }}{{ end }}">
+                </div>
+                <div class="form-group">
+                    <label for="observacao">Observações:</label>
+                    <input id="observacao" name="observacao" class="form-control" type="text"
+                           value="{{ .imovel.Observacao }}">
+                </div>
+                <div class="form-group">
+                    <label for="dia_base">Dia Base:</label>
+                    <input id="dia_base" name="dia_base" class="form-control" type="number"
+                           value="{{ .imovel.DiaBase }}">
+                </div>
+                <div class="espacador"></div>
+                <div class="rodapetabela">
+                    <button class="botaosalvar">Salvar Dados</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{{ end }}

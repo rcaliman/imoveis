@@ -1,0 +1,156 @@
+:root {
+    --bs-border-width: 1px;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-primary-bg-subtle: #cfe2ff;
+    --bs-primary-bg-border: #bacbe6;
+    --bs-success-bg-subtle: #d1e7dd;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --verde: #198754;
+    --borda: #cccccc;
+}
+
+body {
+    padding-top: 20px;
+}
+
+.espacador {
+    padding: 3px 10px 2px;
+}
+
+.navbar-brand {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-right: 10px;
+    margin-left: auto;
+}
+a.nav-link {
+    color: white !important;
+    font-weight: bold !important;
+}
+a.nav-link:hover {
+    color: yellow !important;
+}
+
+th {
+    text-align: center;
+    color: var(--bs-gray-dark);
+    border-top:none;
+    border-bottom: solid 1px var(--bs-primary-bg-border);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 0, 0.56);
+}
+.thlink {
+    text-align: center;
+    color: var(--bs-gray-dark) !important;
+    text-decoration: underline;
+}
+
+td {
+    vertical-align: middle;
+}
+td.number {
+    text-align: end;
+}
+td.center {
+    text-align: center;
+}
+td.link {
+    text-align: center;
+}
+td.imprimir {
+    border-top: solid 2px var(--bs-gray-300);
+    border-bottom: solid 2px var(--bs-gray-300);
+}
+
+td.adicionar {
+    text-align: center;
+    background-color: var(--bs-gray-200);
+    border-bottom: none;
+}
+
+.inputgerarrecibo {
+    color: var(--bs-gray-dark);
+    padding: 6px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.botaosalvar {
+    color: var(--bs-gray-dark);
+    padding: 6px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+.btn-form {
+    border: 0px;
+    border-radius: 0;
+    width: 100%;
+}
+.gerarrecibos {
+    text-align: end;
+    vertical-align: center;
+}
+
+.rodapetabela {
+    text-align: end;
+    background-color: var(--bs-gray-200);
+    padding: 5px 10px;
+}
+
+.form-group {
+    padding-top: 5px;
+}
+.form-control {
+    border-radius: 0px !important;
+}
+.form-select {
+    border-radius: 0px !important;
+}
+option {
+    border-radius: 0px !important;
+}
+label {
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+.checkImprimir {
+    width: 23px;
+    height: 23px;
+}
+.avisocondominio {
+    color: var(--bs-gray-dark);
+    font-size: 0.7em;
+}
+
+.usuarios {
+    width: 50%;
+    border-top: solid 1px var(--bs-gray-300);
+    border-left: solid 1px var(--bs-gray-300);
+    border-right: solid 1px var(--bs-gray-300);
+    margin: auto;
+    width: 50%;
+}
+
+.marcartodos {
+    display: inline;
+    border: solid 1px var(--borda);
+    padding-right: 1px;
+    background-color: #fff;
+}

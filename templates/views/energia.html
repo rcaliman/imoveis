@@ -1,0 +1,58 @@
+{{ define "views/energia.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Energia">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Relogio 1</th>
+                    <th>Kitnet 1</th>
+                    <th>Relogio 2</th>
+                    <th>Kitnet 2</th>
+                    <th>Relogio 3</th>
+                    <th>Kitnet 3</th>
+                    <th>Valor por kWh</th>
+                    <th>Valor da Conta</th>
+                    <th colspan="3">
+                        <a class="btn btn-sm btn-success btn-form" href="/sistema/energia/form">Adicionar</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ range .energia}}
+                    <tr {{ if .UltimoRegistro }}style="color: red"{{ end }}>
+                        <td >{{ .Data | formataData }}</td>
+                        <td class="number">{{ .Relogio1 }}</td>
+                        <td class="number">{{ .ValorConta1 | formataDinheiro }}</td>
+                        <td class="number">{{ .Relogio2 }}</td>
+                        <td class="number">{{ .ValorConta2 | formataDinheiro }}</td>
+                        <td class="number">{{ .Relogio3 }}</td>
+                        <td class="number">{{ .ValorConta3 | formataDinheiro }}</td>
+                        <td class="number">{{ printf "%f" .ValorKwh }}</td>
+                        <td class="number">{{ .ValorConta |formataDinheiro }}</td>
+                        <td class="center">{{ if .UltimoRegistro }}<a class="btn btn-sm btn-secondary btn-form"
+                                              href="/sistema/energia/form?editar={{ .ID }}">Alterar</a>{{ end }}</td>
+                    </tr>
+                {{end}}
+                <tr>
+                    <td class="table-primary adicionar" colspan="12">
+                        &nbsp;
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{{ end }}

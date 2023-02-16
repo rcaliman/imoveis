@@ -1,0 +1,78 @@
+{{ define "views/imoveis.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Imóveis">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <form method="post" action="recibos" name="form_recibos" target="_blank">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th><a class="thlink" href="imoveis?ordenador=tipo">Tipo&darr;</a></th>
+                        <th><a class="thlink" href="imoveis?ordenador=numero">Numero&darr;</a></th>
+                        <th><a class="thlink" href="imoveis?ordenador=local">Local&darr;</a></th>
+                        <th><a class="thlink" href="imoveis?ordenador=cliente">Cliente&darr;</a></th>
+                        <th><a class="thlink" href="imoveis?ordenador=valor_aluguel">Valor&darr;</a></th>
+                        <th>Observação</th>
+                        <th><a class="thlink" href="imoveis?ordenador=dia_base">Dia&darr;</a></th>
+                        <th>Imprimir</th>
+                        <th colspan="2"><a class="btn btn-sm btn-success btn-form" href="/sistema/imoveis/form">Adicionar</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{ range .imoveis}}
+                        <tr>
+                            <td>{{ .Tipo }}</td>
+                            <td class="number">{{ .Numero }}</td>
+                            <td>{{ .Local }}</td>
+                            <td>{{ .Cliente.Nome }}</td>
+                            <td class="number">{{ .ValorAluguel | formataDinheiro }}</td>
+                            <td>{{ .Observacao }}</td>
+                            <td class="number">{{ .DiaBase }}</td>
+                            <td class="center"><input type="checkbox" class="checkImprimir" name="imprimir" value="{{ .ID }}"></td>
+                            <td class="center"><a class="btn btn-sm btn-secondary btn-form"
+                                                  href="/sistema/imoveis/form?editar={{ .ID }}">Alterar</a></td>
+                            <td class="center"><a class="btn btn-sm btn-danger btn-form"
+                                                  href="/sistema/imoveis?apagar={{ .ID }}" onclick="return confirm('Tem certeza de que deseja apagar o imóvel?');">Deletar</a></td>
+                        </tr>
+                    {{end}}
+                    <tr>
+                        <td class="imprimir" colspan="10">
+                            <div class="gerarrecibos">
+                                <div class="marcartodos"><input type="checkbox" class="checkImprimir" onClick="marcaTodos(this)"> Marcar todos </div>&nbsp;
+                                {{ .select_meses }}
+                                {{ .select_anos }}
+                                <button class="botaosalvar">Gerar Recibos</button>
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" class="adicionar">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    </body>
+    <script>
+        function marcaTodos(source) {
+            checkboxes = document.getElementsByClassName('checkImprimir');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
+    </html>
+
+{{ end }}

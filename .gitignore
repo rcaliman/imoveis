@@ -1,0 +1,5 @@
+.idea
+Dockerfile
+docker-compose.yml
+imoveis
+mysql-dump

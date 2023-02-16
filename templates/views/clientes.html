@@ -1,0 +1,62 @@
+{{ define "views/clientes.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Clientes">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>CI</th>
+                    <th>CPF</th>
+                    <th>Telefone Celular</th>
+                    <th>Telefone Fixo</th>
+                    <th colspan="2">
+                        <a class="btn btn-sm btn-success btn-form" href="/sistema/clientes/form">Adicionar</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ range .clientes}}
+                    <tr>
+                        {{ if .Locacoes }}
+                            <td data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{{ .Locacoes }}">{{ .Nome }}</td>
+                        {{ else }}
+                            <td style="text-decoration: underline;">{{ .Nome }}</td>
+                        {{ end }}
+
+                        <td class="number">{{ .DataNascimento | formataData }}</td>
+                        <td class="number">{{ .Ci }}</td>
+                        <td class="number">{{ if .Cpf }}{{ .Cpf | mascaraDocumento }}{{ end }}</td>
+                        <td class="number">{{ .Telefone1 }}</td>
+                        <td class="number">{{ .Telefone2 }}</td>
+                        <td class="center"><a class="btn btn-sm btn-secondary btn-form"
+                                              href="/sistema/clientes/form?editar={{ .ID }}">Alterar</a></td>
+                        <td class="center"><a class="btn btn-sm btn-danger btn-form"
+                                              href="/sistema/clientes?apagar={{ .ID }}"
+                                              onclick="return confirm('Tem certeza de que deseja apagar o cliente?');">Deletar</a>
+                        </td>
+                    </tr>
+                {{end}}
+                <tr>
+                    <td class="table-primary adicionar" colspan="8">
+                        &nbsp;
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{{ end }}

@@ -1,0 +1,52 @@
+{{ define "views/clientes_form.html" }}
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    {{ template "layouts/header.html" }}
+    <body>
+    <input type="hidden" id="tituloPagina" value="Formulário de Clientes">
+    <div class="container">
+        {{ template "layouts/navbar.html"}}
+    </div>
+    <div class="container">
+        <div class="espacador">
+            <form name="clientes_form" id="clientes_form" method="post" action="../clientes">
+                <input type="hidden" value="{{ .cliente.ID }}" name="id">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input id="nome" name="nome" class="form-control" type="text" value="{{ .cliente.Nome }}">
+                </div>
+                <div class="form-group">
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <input id="data_nascimento" name="data_nascimento" class="form-control" type="date"
+                           value="{{if .cliente.DataNascimento }}{{ .cliente.DataNascimento | extraiData }}{{ end }}">
+                </div>
+                <div class="form-group">
+                    <label for="ci">CI:</label>
+                    <input id="ci" name="ci" class="form-control" type="text" value="{{ .cliente.Ci }}">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input id="cpf" name="cpf" class="form-control" type="text" value="{{ .cliente.Cpf }}">
+                </div>
+                <div class="form-group">
+                    <label for="telefone_1">Telefone Celular:</label>
+                    <input id="telefone_1" name="telefone_1" class="form-control" type="text"
+                           value="{{ .cliente.Telefone1 }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="telefone_2">Telefone Fixo:</label>
+                    <input id="telefone_2" name="telefone_2" class="form-control" type="text"
+                           value="{{ .cliente.Telefone2 }}"/>
+                </div>
+                <div class="espacador"></div>
+                <div class="rodapetabela">
+                    <button class="botaosalvar">Salvar Dados</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{{ end }}

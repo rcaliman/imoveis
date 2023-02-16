@@ -1,0 +1,41 @@
+.recibo {
+    font-family: 'Courier New', monospace;
+}
+
+.titulo {
+    text-align: center;
+    padding-top: 1.1em;
+    font-weight: bold;
+}
+
+.linharecibo {
+    border: none;
+    width: auto;
+    height: 120px;
+    padding-bottom: 10%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+.linhadata {
+    font-size: 1.1em;
+    text-align: end;
+    padding-bottom: 1.3em;
+}
+
+.linhaassinatura {
+    text-align: center;
+    font-size: 1.2em
+}
+
+.linhatelefone {
+    font-size: 1.2em;
+    text-align: end;
+    padding-bottom: 2em;
+}
+
+.contapagina {
+    font-size: 1em;
+    text-align: end;
+}
