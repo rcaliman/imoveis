@@ -20,8 +20,9 @@ func ConectaDB() {
 	pass := os.Getenv("DBPASS")
 	host := os.Getenv("DBHOST")
 	database := os.Getenv("DATABASE")
+	port := os.Getenv("DBPORT")
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local", user, pass, host, database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", user, pass, host, port, database)
 	DB, err = gorm.Open(mysql.Open(dsn))
 	if err != nil {
 		log.Fatal("erro ao conectar ao banco de dados", err)

@@ -1,15 +1,17 @@
 package routers
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"imoveis/auth"
 	"imoveis/controllers"
 	"imoveis/utils"
+	"os"
 )
 
 func IniciaRoteamento() {
-
+	port := os.Getenv("PORT")
 	r := gin.Default()
 	r.SetFuncMap(template.FuncMap{
 		"extraiData":       utils.ExtraiData,
@@ -41,5 +43,5 @@ func IniciaRoteamento() {
 	sistema.POST("/usuarios/form", controllers.UsuariosForm)
 	sistema.POST("/usuarios", controllers.Usuarios)
 
-	r.Run(":5000")
+	r.Run(fmt.Sprintf(":%s", port))
 }

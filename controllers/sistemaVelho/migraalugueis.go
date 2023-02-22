@@ -28,7 +28,11 @@ func MigraAlugueis() {
 
 	var sistemaNovoClientes []novoMD.Cliente
 	novoDB.DB.Find(&sistemaNovoClientes)
-	if len(sistemaNovoClientes) > 0 {
+
+	var sistemaVelhoClientes []velhoMD.Al_Cliente
+	velhoDB.DB.Find(&sistemaVelhoClientes)
+
+	if len(sistemaNovoClientes) == 0 && len(sistemaVelhoClientes) > 0 {
 
 		var sistemaVelhoClientes []velhoMD.Al_Cliente
 		velhoDB.DB.Find(&sistemaVelhoClientes)
