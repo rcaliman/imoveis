@@ -4,47 +4,49 @@
     <html lang="pt-br">
     {{ template "layouts/header.html" }}
     <body>
-    <input type="hidden" id="tituloPagina" value="Usuario">
-    <div class="container">
-        {{ template "layouts/navbar.html"}}
-    </div>
+    <input type="hidden" id="tituloPagina" value="Lista de usuários">
+    {{ template "layouts/navbar.html"}}
     <div class="container">
         <div class="espacador">
             <form method="post" action="./usuarios" needs-validation>
                 <input type="hidden" name="usuario" value="{{ .usuario.Usuario }}">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Tipo</th>
-                        <th>Senha Atual</th>
-                        <th>Nova Senha</th>
-                        <th>Repete Nova Senha</th>
-                        <th colspan="2">{{ if .tipo.administrador }}<a class="btn btn-sm btn-success btn-form"
-                                                                       href="/sistema/usuarios/form">Administrar Usuários</a>{{ end }}
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Tipo</th>
+                            <th>Senha Atual</th>
+                            <th>Nova Senha</th>
+                            <th>Repete Nova Senha</th>
+                            <th colspan="2">{{ if .tipo.administrador }}<a class="btn btn-sm btn-success btn-form"
+                                                                           href="/sistema/usuarios/form">Administrar
+                                    Usuários</a>{{ end }}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                    <td>{{ .usuario.Usuario }}</td>
-                    <td>{{ .usuario.Tipo }}</td>
-                    <td>
-                        <input name="senhaatual" type="password" required>
-                    </td>
-                    <td>
-                        <input id="novasenha" name="novasenha" type="password" required>
-                    </td>
-                    <td>
-                        <input id="confirmanovasenha" name="confirmanovasenha" type="password" required>
-                    </td>
-                    <td>
-                        <button id="botaoalterar" type="submit" class="btn btn-sm btn-secondary btn-form">Alterar Senha
-                        </button>
-                    </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <td>{{ .usuario.Usuario }}</td>
+                        <td>{{ .usuario.Tipo }}</td>
+                        <td>
+                            <input name="senhaatual" class="form-control" type="password" required>
+                        </td>
+                        <td>
+                            <input id="novasenha" name="novasenha" class="form-control" type="password" required>
+                        </td>
+                        <td>
+                            <input id="confirmanovasenha" name="confirmanovasenha" class="form-control" type="password" required>
+                        </td>
+                        <td>
+                            <button id="botaoalterar" type="submit" class="btn btn-sm btn-secondary btn-form">Alterar
+                                Senha
+                            </button>
+                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </form>
         </div>
     </div>

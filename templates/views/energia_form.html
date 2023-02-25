@@ -4,10 +4,8 @@
     <html lang="pt-br">
     {{ template "layouts/header.html" }}
     <body>
-    <input type="hidden" id="tituloPagina" value="Formulário de Energia">
-    <div class="container">
+    <input type="hidden" id="tituloPagina" value="Adicionar/editar consumo de energia">
         {{ template "layouts/navbar.html"}}
-    </div>
     <div class="container">
         <div class="espacador">
             <form name="energia_form" id="energia_form" method="post" action="../energia" needs-validation>

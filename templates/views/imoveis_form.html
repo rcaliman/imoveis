@@ -4,10 +4,8 @@
     <html lang="pt-br">
     {{ template "layouts/header.html" }}
     <body>
-    <input type="hidden" id="tituloPagina" value="Formulário de Imóveis">
-    <div class="container">
+    <input type="hidden" id="tituloPagina" value="Adicionar/editar imóvel">
         {{ template "layouts/navbar.html"}}
-    </div>
     <div class="container">
         <div class="espacador">
             <form name="imoveis_form" id="imoveis_form" method="post" action="../imoveis" needs-validation>

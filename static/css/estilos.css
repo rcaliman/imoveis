@@ -13,12 +13,8 @@
     --borda: #cccccc;
 }
 
-body {
-    padding-top: 20px;
-}
-
 .espacador {
-    padding: 3px 10px 2px;
+    padding-top: 30px;
 }
 
 .navbar-brand {
@@ -30,10 +26,18 @@ body {
     margin-right: 10px;
     margin-left: auto;
 }
+
+#navbarText {
+    align-items: end;
+    margin-left: auto;
+    margin-right: 1px;
+}
+
 a.nav-link {
     color: white !important;
     font-weight: bold !important;
 }
+
 a.nav-link:hover {
     color: yellow !important;
 }
@@ -41,13 +45,14 @@ a.nav-link:hover {
 th {
     text-align: center;
     color: var(--bs-gray-dark);
-    border-top:none;
+    border-top: none;
     border-bottom: solid 1px var(--bs-primary-bg-border);
 }
 
 tr:hover {
     background-color: rgba(255, 255, 0, 0.56);
 }
+
 .thlink {
     text-align: center;
     color: var(--bs-gray-dark) !important;
@@ -57,15 +62,19 @@ tr:hover {
 td {
     vertical-align: middle;
 }
+
 td.number {
     text-align: end;
 }
+
 td.center {
     text-align: center;
 }
+
 td.link {
     text-align: center;
 }
+
 td.imprimir {
     border-top: solid 2px var(--bs-gray-300);
     border-bottom: solid 2px var(--bs-gray-300);
@@ -98,11 +107,13 @@ td.adicionar {
     box-sizing: border-box;
     background-color: whitesmoke;
 }
+
 .btn-form {
     border: 0px;
     border-radius: 0;
     width: 100%;
 }
+
 .gerarrecibos {
     text-align: end;
     vertical-align: center;
@@ -117,23 +128,29 @@ td.adicionar {
 .form-group {
     padding-top: 5px;
 }
+
 .form-control {
     border-radius: 0px !important;
 }
+
 .form-select {
     border-radius: 0px !important;
 }
+
 option {
     border-radius: 0px !important;
 }
+
 label {
     padding-bottom: 2px;
     font-weight: bold;
 }
+
 .checkImprimir {
     width: 23px;
     height: 23px;
 }
+
 .avisocondominio {
     color: var(--bs-gray-dark);
     font-size: 0.7em;
@@ -154,3 +171,4 @@ label {
     padding-right: 1px;
     background-color: #fff;
 }
+

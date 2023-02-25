@@ -9,6 +9,8 @@ import (
 	"imoveis/utils"
 	"log"
 	"net/http"
+	"sort"
+	"strings"
 )
 
 func Recibos(c *gin.Context) {
@@ -19,6 +21,13 @@ func Recibos(c *gin.Context) {
 	ids := c.Request.Form["imprimir"]
 	var imoveis []models.Imovel
 	databases.DB.Preload("Cliente").Preload("Imovel").Where("id in ?", ids).Find(&imoveis)
+	sort.Slice(imoveis, func(i, j int) bool {
+		if strings.Compare(imoveis[i].Cliente.Nome, imoveis[j].Cliente.Nome) < 0 {
+			return true
+		} else {
+			return false
+		}
+	})
 	var recibo string
 	cont := 1
 	for _, imovel := range imoveis {
@@ -43,9 +52,11 @@ func reciboCondominio(c *gin.Context, recibo string, imovel models.Imovel, cont 
 		recibo += fmt.Sprintf(
 			"<div id='linharecibo' class='linharecibo'>Recebi de <b>%s</b> a importância de <b><span id='valorExtenso%d-%d'></span></b> referente ao condominio do mês de <b>%s</b> de <b>%s</b> de %s no Edifício Caliman.</div>", imovel.Cliente.Nome, imovel.ID, qt, c.PostForm("recibo_mes"), c.PostForm("recibo_ano"), imovel.Observacao)
 		recibo += fmt.Sprintf(
-			"<p class='linhadata'>Colatina-ES, 1 de %v de %v", mesPassado, anoPassado)
+			"<p class='linhadata'>Colatina-ES, 1 de %v de %v.", mesPassado, anoPassado)
 		recibo += fmt.Sprintf(
 			"<p class='linhaassinatura'>___________________________________<br>Darci Francisco Caliman<br>Proprietário</p>")
+		recibo += fmt.Sprintf(
+			"<p class='linhatelefone'>&nbsp;%s %s</p>", imovel.Cliente.Telefone1, imovel.Cliente.Telefone2)
 		recibo += fmt.Sprintf(
 			"</div><hr style='border-top: solid 2px;'>")
 		recibo += fmt.Sprintf(
