@@ -100,11 +100,11 @@ func FormataData(data time.Time) string {
 }
 
 func InputSelectMeses() string {
-	mesAtual, _ := strconv.Atoi(time.Time{}.Month().String())
+	mesAtual := int(time.Now().Month())
 	meses := []string{"janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"}
 	selectMeses := "<select name='recibo_mes' class='inputgerarrecibo' id='recibo_mes'>"
 	for i, m := range meses {
-		if i == mesAtual {
+		if (i + 1) == mesAtual {
 			selectMeses += fmt.Sprintf("<option selected>%s</option>", m)
 		} else {
 			selectMeses += fmt.Sprintf("<option>%s</option>", m)
@@ -129,7 +129,7 @@ func InputSelectAnos() string {
 	return selectAnos
 }
 
-func TraduzMes(mes, ano string) (string, string) {
+func DizMesAnterior(mes, ano string) (string, string) {
 	switch mes {
 	case "janeiro":
 		return "fevereiro", ano
