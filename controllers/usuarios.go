@@ -132,7 +132,6 @@ func processaForm(c *gin.Context, id string) {
 	tipo := strings.TrimSpace(c.PostForm("tipo"))
 	senha := strings.TrimSpace(c.PostForm("senha"))
 	confirmasenha := strings.TrimSpace(c.PostForm("confirmasenha"))
-	log.Println(usuario, tipo, senha, confirmasenha)
 	if len(usuario) > 0 && len(tipo) > 0 && len(senha) > 0 && len(confirmasenha) > 0 {
 		if senha == confirmasenha {
 			usuario := models.Usuario{
