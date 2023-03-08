@@ -30,11 +30,11 @@
                     <tr {{ if .UltimoRegistro }}style="color: red"{{ end }}>
                         <td >{{ .Data | formataData }}</td>
                         <td class="number">{{ .Relogio1 }}</td>
-                        <td class="number">{{ .ValorConta1 | formataDinheiro }}</td>
+                        <td class="number"{{ if .UltimoRegistro }} style="font-weight: bold;"{{ end }}>{{ .ValorConta1 | formataDinheiro }}</td>
                         <td class="number">{{ .Relogio2 }}</td>
-                        <td class="number">{{ .ValorConta2 | formataDinheiro }}</td>
+                        <td class="number"{{ if .UltimoRegistro }} style="font-weight: bold;"{{ end }}>{{ .ValorConta2 | formataDinheiro }}</td>
                         <td class="number">{{ .Relogio3 }}</td>
-                        <td class="number">{{ .ValorConta3 | formataDinheiro }}</td>
+                        <td class="number"{{ if .UltimoRegistro }} style="font-weight: bold;"{{ end }}>{{ .ValorConta3 | formataDinheiro }}</td>
                         <td class="number">{{ printf "%f" .ValorKwh }}</td>
                         <td class="number">{{ .ValorConta |formataDinheiro }}</td>
                         <td class="center">{{ if .UltimoRegistro }}<a class="btn btn-sm btn-secondary btn-form"

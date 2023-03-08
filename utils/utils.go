@@ -129,7 +129,7 @@ func InputSelectAnos() string {
 	return selectAnos
 }
 
-func DizMesAnterior(mes, ano string) (string, string) {
+func DizMesPosterior(mes, ano string) (string, string) {
 	switch mes {
 	case "janeiro":
 		return "fevereiro", ano
@@ -164,6 +164,6 @@ func DizMesAnterior(mes, ano string) (string, string) {
 	return "mes", "ano"
 }
 
-func Arredonda2(numero float64) float64 {
+func FormataDoisDecimais(numero float64) float64 {
 	return math.Round(numero*100) / 100
 }

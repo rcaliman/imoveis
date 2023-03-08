@@ -20,6 +20,5 @@ func AuthUsuarios() map[string]string {
 			return string(s)
 		}()
 	}
-	log.Println(logins)
 	return logins
 }

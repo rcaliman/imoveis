@@ -19,7 +19,7 @@ func IniciaRoteamento() {
 		"formataDinheiro":  utils.FormataDinheiro,
 		"mascaraDocumento": utils.MascaraDocumento,
 		"floatToString":    utils.FloatToString,
-		"arredonda2":       utils.Arredonda2,
+		"arredonda2":       utils.FormataDoisDecimais,
 	})
 	r.LoadHTMLGlob("templates/*/**")
 	r.Static("/css", "./static/css")

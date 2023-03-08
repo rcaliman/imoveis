@@ -46,7 +46,7 @@ func Recibos(c *gin.Context) {
 func reciboCondominio(c *gin.Context, recibo string, imovel models.Imovel, cont int) string {
 	qt := 0
 	for qt < 2 {
-		mesPassado, anoPassado := utils.DizMesAnterior(c.PostForm("recibo_mes"), c.PostForm("recibo_ano"))
+		mesPassado, anoPassado := utils.DizMesPosterior(c.PostForm("recibo_mes"), c.PostForm("recibo_ano"))
 		recibo += "<div class='recibo'>"
 		recibo += "<h1 class='titulo'>RECIBO DE CONDOMÍNIO</h1>"
 		recibo += fmt.Sprintf(

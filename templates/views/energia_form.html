@@ -33,12 +33,12 @@
                 <div class="form-group">
                     <label for="valor_kwh">Valor kWh:</label>
                     <input id="valor_kwh" name="valor_kwh" class="form-control" type="number"
-                           value="{{ printf "%f" .energia.ValorKwh }}"/>
+                           value="{{ printf "%f" .energia.ValorKwh }}" step="0.000001"/>
                 </div>
                 <div class="form-group">
                     <label for="valor_conta">Valor Conta:</label>
                     <input id="valor_conta" name="valor_conta" class="form-control" type="number"
-                           value="{{ .energia.ValorConta | arredonda2 }}"  step="0.01">
+                           value="{{ if .energia.ValorConta }}{{ .energia.ValorConta | arredonda2 }}{{ end }}"  step="0.01">
                 </div>
                 <div class="espacador"></div>
                 <div class="rodapetabela">
